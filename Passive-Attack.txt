@@ -1,0 +1,22 @@
+All devices  -> pip install pycryptodome numpy
+
+device B 
+
+python receiver.py --host 0.0.0.0 --port 9001
+
+device A
+
+scp user@192.168.1.20:~/Computer-Security-Learning-Project-main/keys/receiver_public.pem \~/secure_comm/keys/
+
+device C
+
+python attacker_passive.py \
+  --listen-host 0.0.0.0 --listen-port 9000 \
+  --recv-host 192.168.1.20 --recv-port 9001
+
+device A
+
+python sender.py --host 192.168.1.30 --port 9000
+
+[1] for text
+[2] for Audio
